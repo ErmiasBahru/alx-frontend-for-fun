@@ -19,6 +19,17 @@ def main():
         print(f"Missing {sys.argv[1]}", file=sys.stderr)
         exit(1)
 
+    with open(sys.argv[1]) as markdown:
+        with open(sys.argv[2], "w") as html:
+            for tag in markdown:
+                length = len(tag)
+                heading = tag.lstrip("#")
+                html_heading = length - len(heading)
+
+                if 1 <= html_heading <= 6:
+                    tag = "<h{}>".format(html_heading) + heading.strip() + '</h{}>\n'.format(html_heading)
+                    html.write(tag)
+
     exit(0)
 
 
