@@ -27,7 +27,7 @@ def main():
                 html_heading = length - len(heading)
 
                 if 1 <= html_heading <= 6:
-                    tag = "<h{}>".format(html_heading) + heading.strip() + '</h{}>\n'.format(html_heading)
+                    tag = f"<h{html_heading}>{heading.strip()}" + f'</h{html_heading}>\n'
                     html.write(tag)
 
     exit(0)
